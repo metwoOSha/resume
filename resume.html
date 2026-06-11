@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dobrovolskyi Dmytro — Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f5;
+    color: #1a1a2e;
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 36px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .sidebar-name {
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 20px;
+  }
+
+  .sidebar-name h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .sidebar-name .title-badge {
+    display: inline-block;
+    background: #4f46e5;
+    color: #e0e7ff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .sidebar-section-title {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    margin-bottom: 10px;
+  }
+
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+    color: #94a3b8;
+    word-break: break-all;
+  }
+
+  .contact-list li span.icon {
+    color: #4f46e5;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .skill-group-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .skill-group-title:first-child { margin-top: 0; }
+
+  .chip-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .chip {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 0.5px solid #334155;
+    font-size: 10.5px;
+    padding: 3px 7px;
+    border-radius: 4px;
+  }
+
+  .chip.accent {
+    background: #312e81;
+    color: #c7d2fe;
+    border-color: #4338ca;
+  }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 0.5px solid #1e293b;
+    font-size: 11.5px;
+  }
+
+  .lang-row:last-child { border-bottom: none; }
+
+  .lang-level {
+    font-size: 10px;
+    color: #4f46e5;
+    font-weight: 600;
+  }
+
+  /* MAIN */
+  .main {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-header {
+    border-bottom: 2px solid #4f46e5;
+    padding-bottom: 14px;
+  }
+
+  .main-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .main-header .subtitle {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .section-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4f46e5;
+    border-bottom: 0.5px solid #e2e8f0;
+    padding-bottom: 5px;
+    margin-bottom: 14px;
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    padding-left: 14px;
+    border-left: 2px solid #4f46e5;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    background: #4f46e5;
+    border-radius: 50%;
+  }
+
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2px;
+  }
+
+  .exp-role {
+    font-weight: 700;
+    font-size: 13px;
+    color: #0f172a;
+  }
+
+  .exp-date {
+    font-size: 10.5px;
+    color: #94a3b8;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+
+  .exp-company {
+    font-size: 11px;
+    color: #4f46e5;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .exp-bullets li {
+    font-size: 11.5px;
+    color: #475569;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #4f46e5;
+    font-size: 9px;
+    top: 2px;
+  }
+
+  /* PROJECTS */
+  .project-item {
+    background: #f8fafc;
+    border: 0.5px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .project-item:last-child { margin-bottom: 0; }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .project-name {
+    font-weight: 700;
+    font-size: 12.5px;
+    color: #0f172a;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .project-links a {
+    font-size: 10px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+    border: 0.5px solid #c7d2fe;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #eef2ff;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .stack-tag {
+    font-size: 9.5px;
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .project-desc {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.55;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .edu-school {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .edu-degree {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  .edu-year {
+    font-size: 10.5px;
+    color: #94a3b8;
+    font-weight: 500;
+    text-align: right;
+    white-space: nowrap;
+    margin-left: 10px;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; min-height: 297mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-name">
+      <h1>Dobrovolskyi<br>Dmytro</h1>
+      <span class="title-badge">Full Stack Dev</span>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Availability</div>
+      <div style="font-size:11.5px;color:#94a3b8;line-height:1.7;">
+        <div style="color:#c7d2fe;font-weight:600;margin-bottom:4px;">Remote only</div>
+        <div>Flexible schedule</div>
+        <div>Open to part-time / full-time</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Contact</div>
+      <ul class="contact-list">
+        <li><span class="icon">✉</span> dimadobrovolski@gmail.com</li>
+        <li><span class="icon">☎</span> +38 (066) 845-5320</li>
+        <li><span class="icon">◉</span> Ukraine / Kyiv</li>
+        <li>
+          <span class="icon" style="display:flex;align-items:center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#4f46e5" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+          </span>
+          t.me/dima_mtv
+        </li>
+        <li>
+          <span class="icon" style="display:flex;align-items:center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#4f46e5" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </span>
+          github.com/metwoOSha
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Tech Stack</div>
+
+      <div class="skill-group-title">Frontend</div>
+      <div class="chip-wrap">
+        <span class="chip accent">React</span>
+        <span class="chip accent">Next.js</span>
+        <span class="chip accent">TypeScript</span>
+        <span class="chip">SCSS</span>
+        <span class="chip">Tailwind</span>
+        <span class="chip">RTK</span>
+        <span class="chip">Zustand</span>
+      </div>
+
+      <div class="skill-group-title">Backend</div>
+      <div class="chip-wrap">
+        <span class="chip accent">Node.js</span>
+        <span class="chip accent">Express</span>
+        <span class="chip accent">PostgreSQL</span>
+        <span class="chip">Prisma</span>
+        <span class="chip">REST API</span>
+        <span class="chip">Git</span>
+      </div>
+
+      <div class="skill-group-title">AI Tools</div>
+      <div class="chip-wrap">
+        <span class="chip accent">Claude Code</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="sidebar-section-title">Languages</div>
+      <div class="lang-row"><span>Ukrainian</span><span class="lang-level">Native</span></div>
+      <div class="lang-row"><span>Russian</span><span class="lang-level">Native</span></div>
+      <div class="lang-row"><span>English</span><span class="lang-level">B1</span></div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="main-header">
+      <h2>Dmytro Dobrovolskyi</h2>
+      <div class="subtitle">Full Stack Developer (Frontend) · React / Next.js / Node.js / PostgreSQL</div>
+    </div>
+
+    <!-- ABOUT -->
+    <section>
+      <div class="section-head">About</div>
+      <p style="font-size:12px;color:#475569;line-height:1.65;">
+        Frontend Developer with Full Stack experience and 1 year of commercial background. Builds production-ready interfaces with React, Next.js, and TypeScript, and is comfortable working across the stack with Node.js, Express, and PostgreSQL. Focused on writing clean, maintainable code and delivering features that work reliably in production.
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-head">Commercial Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Frontend Developer</span>
+          <span class="exp-date">2025 – Present</span>
+        </div>
+        <div class="exp-company">Airomedical</div>
+        <ul class="exp-bullets">
+          <li>Built and maintained features on a production medical platform (Next.js App Router + TypeScript) covering doctors, hospitals, offers, and editorial content</li>
+          <li>Diagnosed and fixed a critical Vercel build failure related to Suspense boundaries and useSearchParams(), restoring production deployment</li>
+          <li>Implemented location-aware city detection in search queries and added article print support with moment.js-based date formatting</li>
+          <li>Maintained code quality standards using ESLint, Prettier, and Husky; set up AI agent config files as part of team tooling</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PET PROJECTS -->
+    <section>
+      <div class="section-head">Projects</div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-name">MediFlow — Full Stack CRM</span>
+          <div class="project-links">
+            <a href="https://github.com/metwoOSha/MediFlow_FE">FE</a>
+            <a href="https://github.com/metwoOSha/MediFlow_BE">BE</a>
+            <a href="https://mediflowfe.vercel.app/">Page</a>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Express</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">Gemini API</span>
+        </div>
+        <div class="project-desc">
+          Full-stack doctor and appointment management system built end-to-end. Features JWT auth, dynamic slot generation, URL-based filtering, and an AI-powered data seeding pipeline.
+        </div>
+        <div style="margin-top:8px;font-size:10.5px;background:#1e293b;border:0.5px solid #334155;border-radius:4px;padding:5px 9px;color:#64748b;">
+          Login to test account: email <span style="color:#c7d2fe;font-weight:600;">demo@mediflow.com</span>&nbsp;&nbsp;password <span style="color:#c7d2fe;font-weight:600;">Demo1234</span>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-name">WarmHeart 2.0 — E-commerce</span>
+          <div class="project-links">
+            <a href="https://github.com/metwoOSha/WarmHeart_FE">FE</a>
+            <a href="https://github.com/metwoOSha/WarmHeart_BE">BE</a>
+            <a href="https://warm-heart.vercel.app/">Page</a>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Prisma</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Neon.tech</span>
+        </div>
+        <div class="project-desc">
+          Full-stack e-commerce app with JWT auth, persistent cart, and paginated product listing. MVC backend with Express + Prisma, deployed on Vercel + Neon.
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-name">Brewery App</span>
+          <div class="project-links">
+            <a href="https://github.com/metwoOSha/Brewery_App">GitHub</a>
+            <a href="https://brewery-app.vercel.app/">Page</a>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">Zustand</span>
+          <span class="stack-tag">TypeScript</span>
+        </div>
+        <div class="project-desc">
+          Frontend app for browsing breweries with multi-select, lazy scroll, and real-time API pagination via Open Brewery DB.
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="section-head">Education</div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-school">National Technical University of Ukraine "Igor Sikorsky KPI"</div>
+          <div class="edu-degree">Bachelor's degree · Industrial Engineering (Specialty 133)</div>
+        </div>
+        <div class="edu-year">2019 – 2023</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>

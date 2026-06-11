@@ -346,8 +346,20 @@
   }
 
   @media print {
-    body { background: white; }
-    .page { margin: 0; box-shadow: none; min-height: 297mm; }
+    @page { size: A4; margin: 0; }
+    body { background: white; margin: 0; padding: 0; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 210mm;
+      min-height: 297mm;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+    }
+    .sidebar {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
   }
 </style>
 </head>
@@ -358,7 +370,7 @@
   <aside class="sidebar">
     <div class="sidebar-name">
       <h1>Dobrovolskyi<br>Dmytro</h1>
-      <span class="title-badge">Full Stack Dev</span>
+      <span class="title-badge">Full Stack Developer</span>
     </div>
 
     <div>
@@ -412,11 +424,11 @@
         <span class="chip accent">PostgreSQL</span>
         <span class="chip">Prisma</span>
         <span class="chip">REST API</span>
-        <span class="chip">Git</span>
       </div>
 
-      <div class="skill-group-title">AI Tools</div>
+      <div class="skill-group-title">Tools</div>
       <div class="chip-wrap">
+        <span class="chip">Git</span>
         <span class="chip accent">Claude Code</span>
       </div>
     </div>
@@ -425,7 +437,7 @@
       <div class="sidebar-section-title">Languages</div>
       <div class="lang-row"><span>Ukrainian</span><span class="lang-level">Native</span></div>
       <div class="lang-row"><span>Russian</span><span class="lang-level">Native</span></div>
-      <div class="lang-row"><span>English</span><span class="lang-level">B1</span></div>
+      <div class="lang-row"><span>English</span><span class="lang-level">Intermediate</span></div>
     </div>
   </aside>
 
@@ -433,15 +445,15 @@
   <main class="main">
 
     <div class="main-header">
-      <h2>Dmytro Dobrovolskyi</h2>
-      <div class="subtitle">Full Stack Developer (Frontend) · React / Next.js / Node.js / PostgreSQL</div>
+      <div class="subtitle" style="font-size:13px;font-weight:600;color:#0f172a;margin-bottom:4px;">Full Stack Developer (Frontend)</div>
+      <div class="subtitle">React / Next.js / Node.js / PostgreSQL</div>
     </div>
 
     <!-- ABOUT -->
     <section>
       <div class="section-head">About</div>
       <p style="font-size:12px;color:#475569;line-height:1.65;">
-        Frontend Developer with Full Stack experience and 1 year of commercial background. Builds production-ready interfaces with React, Next.js, and TypeScript, and is comfortable working across the stack with Node.js, Express, and PostgreSQL. Focused on writing clean, maintainable code and delivering features that work reliably in production.
+        Frontend Developer with Full Stack experience and 1 year in a production team. Able to take a feature from database schema to deployed UI — independently. Gets things shipped without hand-holding.
       </p>
     </section>
 
@@ -457,9 +469,8 @@
         <div class="exp-company">Airomedical</div>
         <ul class="exp-bullets">
           <li>Built and maintained features on a production medical platform (Next.js App Router + TypeScript) covering doctors, hospitals, offers, and editorial content</li>
-          <li>Diagnosed and fixed a critical Vercel build failure related to Suspense boundaries and useSearchParams(), restoring production deployment</li>
           <li>Implemented location-aware city detection in search queries and added article print support with moment.js-based date formatting</li>
-          <li>Maintained code quality standards using ESLint, Prettier, and Husky; set up AI agent config files as part of team tooling</li>
+          <li>Contributed to developer experience improvements: introduced pre-commit hooks and linting pipeline that reduced code review friction across the team</li>
         </ul>
       </div>
     </section>
@@ -482,7 +493,6 @@
           <span class="stack-tag">TypeScript</span>
           <span class="stack-tag">PostgreSQL</span>
           <span class="stack-tag">Next.js</span>
-          <span class="stack-tag">JWT</span>
           <span class="stack-tag">Gemini API</span>
         </div>
         <div class="project-desc">
@@ -528,7 +538,7 @@
           <span class="stack-tag">TypeScript</span>
         </div>
         <div class="project-desc">
-          Frontend app for browsing breweries with multi-select, lazy scroll, and real-time API pagination via Open Brewery DB.
+          Demonstrates client-side state management with Zustand: virtual list rendering, multi-select with right-click deselect, and seamless API pagination — all without a backend.
         </div>
       </div>
     </section>
@@ -539,7 +549,7 @@
       <div class="edu-item">
         <div>
           <div class="edu-school">National Technical University of Ukraine "Igor Sikorsky KPI"</div>
-          <div class="edu-degree">Bachelor's degree · Industrial Engineering (Specialty 133)</div>
+          <div class="edu-degree">Bachelor's degree · Computer Science / Industrial Engineering (Specialty 133)</div>
         </div>
         <div class="edu-year">2019 – 2023</div>
       </div>

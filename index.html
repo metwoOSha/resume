@@ -147,10 +147,10 @@
 
   /* MAIN */
   .main {
-    padding: 32px 32px;
+    padding: 6px 30px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 9px;
   }
 
   .main-header {
@@ -180,15 +180,15 @@
     text-transform: uppercase;
     color: #4f46e5;
     border-bottom: 0.5px solid #e2e8f0;
-    padding-bottom: 5px;
-    margin-bottom: 12px;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
   }
 
   /* EXPERIENCE */
   .exp-item {
     padding-left: 14px;
     border-left: 2px solid #4f46e5;
-    margin-bottom: 16px;
+    margin-bottom: 7px;
     position: relative;
   }
 
@@ -261,8 +261,8 @@
     background: #f8fafc;
     border: 0.5px solid #e2e8f0;
     border-radius: 6px;
-    padding: 10px 14px;
-    margin-bottom: 8px;
+    padding: 6px 11px;
+    margin-bottom: 5px;
   }
 
   .project-item:last-child { margin-bottom: 0; }
@@ -300,7 +300,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
 
   .stack-tag {
@@ -314,7 +314,7 @@
   .project-desc {
     font-size: 11px;
     color: #475569;
-    line-height: 1.55;
+    line-height: 1.45;
   }
 
   /* EDUCATION */
@@ -333,7 +333,7 @@
   .edu-degree {
     font-size: 11px;
     color: #64748b;
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   .edu-year {
@@ -452,15 +452,10 @@
   <!-- MAIN CONTENT -->
   <main class="main">
 
-    <div class="main-header">
-      <div class="subtitle" style="font-size:13px;font-weight:600;color:#0f172a;margin-bottom:4px;">Full Stack Developer (Frontend)</div>
-      <div class="subtitle">React / Next.js / Node.js / PostgreSQL</div>
-    </div>
-
     <!-- ABOUT -->
     <section>
       <div class="section-head">About</div>
-       <p style="font-size:12px;color:#475569;line-height:1.65;">
+       <p style="font-size:12px;color:#475569;line-height:1.5;">
         Full Stack Developer building production web applications with a frontend focus. Strong in Next.js and TypeScript, with hands-on backend experience in Express and PostgreSQL, delivering features from API and data layer to user-facing product.
        </p>
     </section>
@@ -509,9 +504,9 @@
           <span class="stack-tag">PostgreSQL</span>
         </div>
         <div class="project-desc">
-          Real-time chat platform with public rooms, built on WebSockets (Socket.io) and Redis Pub/Sub for message fan-out across server instances. Chat history is paginated with TanStack Query's useInfiniteQuery and stays in sync with live socket events; auth uses JWT (httpOnly cookies) with Zustand for UI state. Includes a custom design system (IconBadge, IconButton, CardBadge) with CSS Modules and a persisted theme, styled around a cosmic/aurora "Liquid Glass" look. Backend: Express + TypeScript, Zod-validated REST endpoints, Swagger docs, Docker Compose for local services.
+          Real-time chat platform with public rooms, built on WebSockets (Socket.io) and Redis Pub/Sub for message fan-out across server instances. Chat history is paginated with TanStack Query's useInfiniteQuery; auth uses JWT (httpOnly cookies) with Zustand for UI state. Custom design system with a cosmic/aurora "Liquid Glass" look. Backend: Express + TypeScript, Zod-validated REST endpoints, Swagger docs, Docker Compose.
         </div>
-        <div style="margin-top:8px;font-size:10.5px;background:#1e293b;border:0.5px solid #334155;border-radius:4px;padding:5px 9px;color:#64748b;">
+        <div style="margin-top:5px;font-size:9.5px;background:#1e293b;border:0.5px solid #334155;border-radius:4px;padding:4px 8px;color:#64748b;">
           Login to test account: email <span style="color:#c7d2fe;font-weight:600;">test.acc@test.com</span>&nbsp;&nbsp;password <span style="color:#c7d2fe;font-weight:600;">12345678</span>
         </div>
       </div>
@@ -533,9 +528,9 @@
           <span class="stack-tag">Gemini API</span>
         </div>
         <div class="project-desc">
-          Full-stack doctor and appointment management system built end-to-end from schema to UI. Appointment slots are generated per-doctor from working hours and existing bookings, with filtering and search state stored in the URL for shareable views. JWT auth protects role-specific routes; an AI-powered (Gemini API) pipeline seeds realistic demo data for doctors, clinics, and appointments.
+          Full-stack doctor and appointment management system built end-to-end from schema to UI. Appointment slots are generated per-doctor from working hours and existing bookings, with filtering and search state stored in the URL for shareable views. JWT auth protects role-specific routes; an AI-powered (Gemini API) pipeline seeds realistic demo data.
         </div>
-        <div style="margin-top:8px;font-size:10.5px;background:#1e293b;border:0.5px solid #334155;border-radius:4px;padding:5px 9px;color:#64748b;">
+        <div style="margin-top:5px;font-size:9.5px;background:#1e293b;border:0.5px solid #334155;border-radius:4px;padding:4px 8px;color:#64748b;">
           Login to test account: email <span style="color:#c7d2fe;font-weight:600;">demo@mediflow.com</span>&nbsp;&nbsp;password <span style="color:#c7d2fe;font-weight:600;">Demo1234</span>
         </div>
       </div>
@@ -557,7 +552,7 @@
           <span class="stack-tag">Neon.tech</span>
         </div>
         <div class="project-desc">
-          Full-stack e-commerce storefront with JWT auth, a persistent server-synced cart, and paginated, filterable product listings. MVC backend (Express + Prisma) with a normalized PostgreSQL schema, deployed on Vercel with Neon serverless Postgres.
+          Full-stack e-commerce storefront with JWT auth, a persistent server-synced cart, and paginated, filterable product listings. MVC backend (Express + Prisma) with a normalized PostgreSQL schema, deployed with Neon serverless Postgres.
         </div>
       </div>
     </section>
